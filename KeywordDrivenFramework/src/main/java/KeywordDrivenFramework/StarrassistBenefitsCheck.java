@@ -110,6 +110,8 @@ public class StarrassistBenefitsCheck
 		{
 			objectInput.write_data("Flag_for_execution", "Error");
 			objectOutput.write_data("Flag_for_execution", "Error");
+			objectBrowse.login(url, configFile.getProperty("userName"), configFile.getProperty("password"));
+			
 		}
 		 objectInput.update_row();
 		 objectOutput.update_row();
