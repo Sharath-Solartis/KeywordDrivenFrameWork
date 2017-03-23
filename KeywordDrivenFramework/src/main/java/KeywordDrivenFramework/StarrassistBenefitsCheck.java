@@ -77,8 +77,8 @@ public class StarrassistBenefitsCheck
 	  if(objectInput.read_data("flag_for_execution").equals("Y"))
 		{  
 		
-		//try
-		//{
+		try
+		{
 		while(objectTestScript.has_next_row())
 		{
 			//log.info(testscript.read_data(testscript.get_rownumber(),5).toString());
@@ -105,12 +105,12 @@ public class StarrassistBenefitsCheck
 		
 		objectInput.write_data("Flag_for_execution", "Completed");
 		 objectOutput.write_data("Flag_for_execution", "Completed");
-		//}
-		//catch(TimeoutException e)
-		//{
-			//objectInput.write_data("Flag_for_execution", "Error");
-			// objectOutput.write_data("Flag_for_execution", "Error");
-		//}
+		}
+		catch(TimeoutException e)
+		{
+			objectInput.write_data("Flag_for_execution", "Error");
+			objectOutput.write_data("Flag_for_execution", "Error");
+		}
 		 objectInput.update_row();
 		 objectOutput.update_row();
 		} //end of if
