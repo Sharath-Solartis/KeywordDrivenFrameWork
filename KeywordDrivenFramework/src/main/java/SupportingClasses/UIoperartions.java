@@ -302,7 +302,7 @@ case "DATEPICKER":
       	wait.until(ExpectedConditions.elementToBeClickable(this.getObject(p,objectType)));
      	driver.findElement(this.getObject(p,objectType)).clear();
      	driver.findElement(this.getObject(p,objectType)).sendKeys(inputValue);
-        //driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);
+        driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);
    }
 catch(StaleElementReferenceException e)
  {
