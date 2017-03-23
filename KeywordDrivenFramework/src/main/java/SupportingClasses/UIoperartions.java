@@ -123,8 +123,7 @@ case "CLICK":
 		 this.perform(p, operation, objectType, value, dbcolumn_name, dataFlag, input, output, driver, waitingTime);
 		 
 	 }
-	 break;
-		 
+	 break;		 
   //----------------------------------------------------SELECT OPERATION------------------------------------------------------------------------- 
  case "SELECT":
 	 try
@@ -303,7 +302,7 @@ case "DATEPICKER":
       	wait.until(ExpectedConditions.elementToBeClickable(this.getObject(p,objectType)));
      	driver.findElement(this.getObject(p,objectType)).clear();
      	driver.findElement(this.getObject(p,objectType)).sendKeys(inputValue);
-        driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);
+        //driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);
    }
 catch(StaleElementReferenceException e)
  {
@@ -366,7 +365,35 @@ case "IMGIDVISIBLE":
 		System.out.println("waited for invisibility");
 		break;
 	}
-//----------------------------------------------------------------------------------------------------------------------------------------------------	
+//---------------------------------------------------------Set text without enter-------------------------------------------------------------------------------------------	
+case "SETTEXT WITHOUT ENTER":
+    try{	   
+        switch(dataFlag)
+         {
+        	case "Read":
+        		inputValue = input.read_data(dbcolumn_name);
+        		break;
+        		
+        	case "Default":	
+        		inputValue = value;
+        		break;
+          }
+        		 wait = new WebDriverWait(driver, 30);
+        		 wait = new WebDriverWait(driver, waitingTimeinseconds);
+     		     wait.until(ExpectedConditions.visibilityOfElementLocated(this.getObject(p,objectType)));
+     		     wait.until(ExpectedConditions.presenceOfElementLocated(this.getObject(p,objectType)));
+         	     wait.until(ExpectedConditions.elementToBeClickable(this.getObject(p,objectType)));
+        		driver.findElement(this.getObject(p,objectType)).clear();
+        		driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);
+        		driver.findElement(this.getObject(p,objectType)).sendKeys(inputValue);
+        		break;  		 
+     }       
+   catch(StaleElementReferenceException e)
+    {
+	  this.perform(p, operation, objectType, value, dbcolumn_name, dataFlag, input, output, driver, waitingTime);
+    }
+    break;
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 default:
 	    System.out.println("operations not  performed");
 	    break;
