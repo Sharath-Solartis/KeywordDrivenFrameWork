@@ -144,7 +144,7 @@ case "CLICK":
         	    wait.until(ExpectedConditions.visibilityOfElementLocated(this.getObject(p,objectType)));
         		Select dropdown = new Select(driver.findElement(this.getObject(p,objectType)));
         		dropdown.selectByVisibleText(inputValue);
-        		driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);  		
+        		//driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);  		
        }
 	 catch(StaleElementReferenceException|TimeoutException e)
 	 {
@@ -366,7 +366,7 @@ case "IMGIDVISIBLE":
 		break;
 	}
 //---------------------------------------------------------Set text without enter-------------------------------------------------------------------------------------------	
-case "SETTEXT WITHOUT ENTER":
+case "SETTEXT_WITHOUT_ENTER":
     try{	   
         switch(dataFlag)
          {
@@ -384,7 +384,6 @@ case "SETTEXT WITHOUT ENTER":
      		     wait.until(ExpectedConditions.presenceOfElementLocated(this.getObject(p,objectType)));
          	     wait.until(ExpectedConditions.elementToBeClickable(this.getObject(p,objectType)));
         		driver.findElement(this.getObject(p,objectType)).clear();
-        		driver.findElement(this.getObject(p,objectType)).sendKeys(Keys.ENTER);
         		driver.findElement(this.getObject(p,objectType)).sendKeys(inputValue);
         		break;  		 
      }       
