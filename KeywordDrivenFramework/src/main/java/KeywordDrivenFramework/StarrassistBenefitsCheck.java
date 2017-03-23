@@ -33,7 +33,7 @@ public class StarrassistBenefitsCheck
 		objectBrowse=new browserLaunching();
 		objectUIoperations=new UIoperartions();
 		objectconditions=new ConditionsChecking();
-		configFile = new propertiesHandle("A:/1 Projects/13 Starr Assist/ConfigFiles/config_selenium_Starr_Assist_benefits_upadte.properties");
+		configFile = new propertiesHandle("A:/1 Projects/13 Starr Assist/PDF Change/Configuration/Config_C1128.properties");
 		databaseOperartions.conn_setup(configFile);
 		System.setProperty("jsse.enableSNIExtension", "false");
 		
