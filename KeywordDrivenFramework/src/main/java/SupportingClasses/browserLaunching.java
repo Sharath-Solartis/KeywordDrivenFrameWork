@@ -94,10 +94,10 @@ public class browserLaunching {
 	 
 	 public void login(String url,String username,String password)
 		{
-			 //driver.get(url);
-			 driver.findElement(By.name("answer(Object::UserDetail::userName)")).sendKeys(username);
-			 driver.findElement(By.name("answer(Object::UserDetail::passWord)")).sendKeys(password);
-			 driver.findElement(By.xpath("//input[@value='Log In']")).click(); 
+			 driver.get(url);
+			 driver.findElement(By.id("loginForm:login_username")).sendKeys(username);
+			 driver.findElement(By.id("loginForm:login_password")).sendKeys(password);
+			 driver.findElement(By.xpath("//input[@value='Log In']")).click();
 		}
 
 		

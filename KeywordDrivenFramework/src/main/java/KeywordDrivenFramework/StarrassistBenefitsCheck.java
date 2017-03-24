@@ -1,6 +1,7 @@
 package KeywordDrivenFramework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.net.UrlChecker;
 
@@ -33,7 +34,7 @@ public class StarrassistBenefitsCheck
 		objectBrowse=new browserLaunching();
 		objectUIoperations=new UIoperartions();
 		objectconditions=new ConditionsChecking();
-		configFile = new propertiesHandle("A:/1 Projects/13 Starr Assist/ConfigFiles/config_selenium_Starr_Assist_benefits_upadte.properties");
+		configFile = new propertiesHandle("A:/1 Projects/13 Starr Assist/PDF Change/Configuration/Config_C1128.properties");
 		databaseOperartions.conn_setup(configFile);
 		System.setProperty("jsse.enableSNIExtension", "false");
 		
@@ -76,7 +77,8 @@ public class StarrassistBenefitsCheck
 	  if(objectInput.read_data("flag_for_execution").equals("Y"))
 		{  
 		
-		
+		try
+		{
 		while(objectTestScript.has_next_row())
 		{
 			//log.info(testscript.read_data(testscript.get_rownumber(),5).toString());
@@ -103,6 +105,14 @@ public class StarrassistBenefitsCheck
 		
 		objectInput.write_data("Flag_for_execution", "Completed");
 		 objectOutput.write_data("Flag_for_execution", "Completed");
+		}
+		catch(TimeoutException e)
+		{
+			objectInput.write_data("Flag_for_execution", "Error");
+			objectOutput.write_data("Flag_for_execution", "Error");
+			objectBrowse.login(url, configFile.getProperty("userName"), configFile.getProperty("password"));
+			
+		}
 		 objectInput.update_row();
 		 objectOutput.update_row();
 		} //end of if
