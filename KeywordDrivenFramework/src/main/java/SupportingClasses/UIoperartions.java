@@ -265,7 +265,7 @@ try
    			for(int i=0; i< RadButtonList.size() ; i++)
    			{
    				System.out.println(((WebElement) RadButtonList.get(i)).getAttribute("value"));
-   				System.out.println(input.read_data(dbcolumn_name));
+   				//System.out.println(input.read_data(dbcolumn_name));
    			if(((WebElement) RadButtonList.get(i)).getAttribute("value").equals(inputValue))
    			{
    				System.out.println("radio button clicked");

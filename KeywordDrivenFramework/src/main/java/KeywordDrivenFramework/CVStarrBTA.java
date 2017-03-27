@@ -24,11 +24,11 @@ public class CVStarrBTA
 	public static String dbColumnNmae=null;
 	public static UIoperartions objectUIoperations=null;
 	public static ExcelOperationsJXL objectTestScript=null;
+	public static ExcelOperationsJXL objectLoginScript=null;
 	public static browserLaunching objectBrowse=null;
 	public static propertiesHandle configFile;
 	public static ConditionsChecking objectconditions=null;	
 	public static void main(String args[]) throws Exception
-	
 	
 	{
 		objectBrowse=new browserLaunching();
@@ -46,7 +46,17 @@ public class CVStarrBTA
 		
 		objectInput.get_dataobjects(configFile.getProperty("input_query"));
 		objectOutput.get_dataobjects(configFile.getProperty("output_query"));
+		
 		Logger log = Logger.getLogger("devpinoyLogger");
+		
+		objectTestScript = new ExcelOperationsJXL(configFile.getProperty("Test_script_path")+configFile.getProperty("File_name"));
+		objectTestScript.getsheets("Test_Scripts");
+		objectTestScript.set_rownumber(1);
+		System.out.println(objectTestScript.get_sheetname());
+		
+		objectLoginScript = new ExcelOperationsJXL(configFile.getProperty("Test_script_path")+configFile.getProperty("File_name"));
+		objectLoginScript.getsheets("LoginDetails");
+		objectLoginScript.set_rownumber(1);
 		
 //********************Login operation*************************************************************************************************************  
 	    String browser=configFile.getProperty("browser");
@@ -66,10 +76,6 @@ public class CVStarrBTA
 			System.out.println("driver object is null");
 		}		
 //************************************************************************************************************************************************
-		objectTestScript = new ExcelOperationsJXL(configFile.getProperty("Test_script_path")+configFile.getProperty("File_name"));
-		objectTestScript.getsheets("Test_Scripts");
-		objectTestScript.set_rownumber(1);
-		System.out.println(objectTestScript.get_sheetname());
 		
   do
 	{
@@ -98,7 +104,9 @@ public class CVStarrBTA
 				    //String condtions1=objectTestScript.read_data(objectTestScript.get_rownumber(),7);
 					String dataProvidingFlag=objectTestScript.read_data(objectTestScript.get_rownumber(),9);
 					String  waitingTime=objectTestScript.read_data(objectTestScript.get_rownumber(),10);
+					System.out.println("present row--->"+objectTestScript.get_rownumber());
 					objectUIoperations.perform(PropertyString,actionKeyword,ObjectType,value,dbcolumnNmae,dataProvidingFlag,objectInput,objectOutput,driver,waitingTime);
+					
 			} //end of if 
 			objectTestScript.next_row();
 		} //end of while
