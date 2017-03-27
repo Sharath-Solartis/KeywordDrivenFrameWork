@@ -40,7 +40,7 @@ public class ConditionsChecking {
 			for(int j=0;j<individualValue.length;j++)
 			{
 				//System.out.println(input.read_data(cond));
-				//System.out.println(individualValue[j]);
+				//System.out.println(individualValue[j]);				
 				if(input.read_data(cond).equals(individualValue[j]))
 				{
 					//System.out.println("condition satisfied");
