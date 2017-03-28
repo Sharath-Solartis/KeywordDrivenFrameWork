@@ -59,7 +59,7 @@ public class CVStarrBTA
 		objectLoginScript.set_rownumber(1);
 		
 //********************Login operation*************************************************************************************************************  
-	    String browser=configFile.getProperty("browser");
+	/*    String browser=configFile.getProperty("browser");
 		String url=configFile.getProperty("url");
 		driver=objectBrowse.launch_browser(browser,url,configFile);
 		log.debug("browser launched");
@@ -74,7 +74,7 @@ public class CVStarrBTA
 		{
 			log.debug("driver object is null");
 			System.out.println("driver object is null");
-		}		
+		}	*/
 //************************************************************************************************************************************************
 		
   do
