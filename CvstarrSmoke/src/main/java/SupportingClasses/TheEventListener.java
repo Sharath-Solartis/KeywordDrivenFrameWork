@@ -12,12 +12,12 @@ import CvstarrSmoke.DriverScript;
 
 public class TheEventListener implements WebDriverEventListener 
 {
-	static  					//Static Block that executed before main program runs.
+	public void log(String path) //Static Block that executed before main program runs.
 	{
 
 
-		File theDir = new File("D:/Logs");
-		 System.out.println("Checking the Presence of Logs Folder in D:\\Logs");
+		File theDir = new File(path);
+		System.out.println("Checking the Presence of Logs Folder in D:\\Logs");
 		
 		// if the directory does not exist, create it
 		if (!theDir.exists()) 

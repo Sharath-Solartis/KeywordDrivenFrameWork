@@ -13,6 +13,7 @@ import SupportingClasses.ExcelOperationsJXL;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DriverScript 
 {
@@ -31,10 +32,12 @@ public static void main(String args[]) throws ClassNotFoundException, SQLExcepti
 	    event=new TheEventListener();
 	    File jarFile = new File(DriverScript.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 	    File FolderFile = jarFile.getParentFile();
-		propertiesHandle configFile = new propertiesHandle(FolderFile + "\\BAD_Config.properties");
+	    propertiesHandle configFile = new propertiesHandle(FolderFile + "\\" + args[0] + ".properties");
 		configFile.setProperty("driver_path", FolderFile +"\\" + configFile.getProperty("driver_folder") + "\\");
 		configFile.setProperty("Test_script_path",FolderFile +"\\" + configFile.getProperty("Test_script_folder") + "\\");
 		configFile.setProperty("OutputFilePath",FolderFile +"\\" + configFile.getProperty("OutputfolderName"));
+		System.setProperty("logfile.name",FolderFile +"\\");
+		event.log(FolderFile +"\\Logs");
 		System.setProperty("jsse.enableSNIExtension", "false");	
 		DriverScript objDriver=new DriverScript(configFile);
 		objDriver.launchBrowser();

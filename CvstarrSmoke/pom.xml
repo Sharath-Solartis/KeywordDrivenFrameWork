@@ -103,11 +103,6 @@
         <goal>single</goal>
       </goals>
       <configuration>
-        <archive>
-          <manifest>
-            <mainClass>servicetesting.ServiceTestingProgram.App</mainClass>
-          </manifest>
-        </archive>
         <descriptorRefs>
           <descriptorRef>jar-with-dependencies</descriptorRef>
         </descriptorRefs>
