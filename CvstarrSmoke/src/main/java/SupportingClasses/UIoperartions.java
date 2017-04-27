@@ -52,29 +52,21 @@ case "CLICK":
  //-------------------------------------------------------GET ATTRIBUTE-------------------------------------------------------------	 
  case "GETATTRIBUTE":
 	     outputValue=this.getValueByAttribute(p, objectType);
-	     file.AppendFileHandle(Outputname+" = "+ outputValue);
-	     file.AppendFileHandle("\n");
+	     file.AppendFileHandle(Outputname+" = "+ outputValue+"\n\n");
 	     System.out.println(outputValue);
          break;
  //------------------------------------------------------GET TEXT----------------------------------------------------------------------                 
  case "GETTEXT":
 	     outputValue=this.getValueByText(p, objectType);
-	     file.AppendFileHandle(Outputname+" = "+ outputValue);
-	     file.AppendFileHandle("\n");
+	     file.AppendFileHandle(Outputname+" = "+ outputValue+"\n\n");
 	     System.out.println(outputValue);
 	     break;
-  //----------------------------------------------------SELECT BY TEXT OPERATION------------------------------------------------------------------------- 
+  //----------------------------------------------------SELECT OPERATION------------------------------------------------------------------------- 
  case "SELECT":
 	     inputValue = value;
 	     this.select(p, objectType, inputValue);
 	     break;
-//--------------------------------------------------SELECT BY VALUE--------------------------------------------------------------------------------- 
- case "SELECTBYVALUE":
-	 inputValue = value;
-     this.selectByValue(p, objectType, inputValue);
-     break;
-	     
-//-----------------------------------------------------MOUSE HOVER-----------------------------------------------------------------------------------------------	     	     
+//--------------------------------------------------MOUSE HOVER---------------------------------------------------------------------------------- 
  case "MOUSEHOVER": 
 	 	 this.mouseHover(p, objectType);
 	 	 break;
@@ -83,12 +75,12 @@ case "AUTOCOMPLETE":
 		 inputValue = value;
 		 this.autoComplete(p, objectType, inputValue);
 		 break;
-//---------------------------------------------------ASSERT TEXT---------------------------------------------------------------------------------------------       	
+//--------------------------------------------------------------------------------------------------------------------------------       	
 case "ASSERTTEXT":
 	  	 inputValue = value;
 	  	 this.assertText(p, objectType, inputValue);
 	  	 break; 	   
-//------------------------------------------------SCREENSHOT----------------------------------------------------------------------------------------   	
+//------------------------------------------------SCREENSHOT------------------------------------------------------------------   	
 case "SCREENSHOT":
     	 this.takeScreenShot();
     	 break;	   	
@@ -106,8 +98,8 @@ case "DATEPICKER":
 
 //-------------------------------------------------------------WAIT FOR LOAD-----------------------------------------------------------------
 case "WAITLOAD":
-		  this.waitLoad(p, objectType);
-		  break;
+		    this.waitLoad(p, objectType);
+		    break;
 //-------------------------------------------------------CONTINUES OPERATION------------------------------------------------------------------------------	
 case "CONTOPERATION":
 		inputValue = value;
@@ -117,8 +109,8 @@ case "CONTOPERATION":
 //--------------------------------------------------------WAITING FOR IMG INVISIBILITY----------------------------------------------------------------------------     
 case "IMGIDVISIBLE":	
 		
-		this.waitTillInvisible(p, objectType);
-		 break;
+			this.waitTillInvisible(p, objectType);
+		    break;
 //---------------------------------------------------------Set text without enter-------------------------------------------------------------------------------------------	
 case "SETTEXT_WITHOUT_ENTER":
 		inputValue = value;
@@ -152,8 +144,7 @@ catch(StaleElementReferenceException e)
 }
 
 
- 
-//============================================Locator Action================================================================================================================  
+ //============================================Locator Action====================================================================  
  protected By getObject(String p,String objectType)
   {
     switch(objectType.toUpperCase())
@@ -201,7 +192,7 @@ catch(StaleElementReferenceException e)
     }
  
 
-  //========================================================Methods of UI oprations=============================================================================================
+  //========================================================Methods of UI oprations=============================================================
     
   protected void click(String p,String objectType) throws StaleElementReferenceException
   {  
@@ -382,16 +373,6 @@ protected void radioButton(String p,String objectType,String inputValue) throws 
 		}
  }
  
- private void selectByValue(String p, String objectType, String inputValue)
- {
-	    this.waitWithClickable(p, objectType);
-	    element = driver.findElement(this.getObject(p,objectType));
-		Select dropdown = new Select(element);
-		dropdown.selectByValue(inputValue);		
- 
- }
-
-
  /*protected String getInputValue(String dataFlag,databaseOperartions input,String value,String dbcolumn_name) throws SQLException
  {
 	 switch(dataFlag)
