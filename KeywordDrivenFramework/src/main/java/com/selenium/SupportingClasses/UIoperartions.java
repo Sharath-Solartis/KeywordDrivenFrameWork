@@ -336,9 +336,6 @@ catch(StaleElementReferenceException e)
 }
 
 }
-
-
-
 //============================================Locator Action====================================================================  
  private By getObject(String p,String objectType)
   {
@@ -412,8 +409,6 @@ catch(StaleElementReferenceException e)
 		
 	 }	  
   }
-    
-  
  //=================================================================================================================================================== 
   
   protected void jsClick(String p,String objectType)

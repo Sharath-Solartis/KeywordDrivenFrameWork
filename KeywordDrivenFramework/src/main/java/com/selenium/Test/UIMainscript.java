@@ -73,8 +73,8 @@ public class UIMainscript
 				 {
 					 BaseDriverScript objDriver=new BaseDriverScript(configFile);
 					 objDriver.launchBrowser();
-				 String ExecutionChoice=configFile.getProperty("ResultsChoice");
-				  System.out.println("Executing main script");
+				     String ExecutionChoice=configFile.getProperty("ResultsChoice");
+				     System.out.println("Executing main script");
 				  if(ExecutionChoice.equals("Comparison"))
 				  {
 					  objDriver.generatExpectedResult(inputrow, outputrow);
